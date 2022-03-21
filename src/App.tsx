@@ -14,7 +14,7 @@ function App() {
       nota: "70",
       porcentaje: "100",
     },
-    { id: 1, nota: "0", porcentaje: "0" },
+    { id: 1, nota: "", porcentaje: "" },
   ]);
 
   const addNewNota = () => {
@@ -78,7 +78,7 @@ function App() {
     <>
       <div className="flex items-center justify-center">
         <div className="flex items-center justify-center flex-col w-10/12 pt-10">
-          <h1 className="text-4xl font-bold mb-10 text-center">
+          <h1 className="text-4xl font-bold mb-5 text-center">
             Calcula tu promedio de notas 📚
           </h1>
           <button
