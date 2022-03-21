@@ -23,8 +23,8 @@ function App() {
       ...notas,
       {
         id: lastId + 1,
-        nota: "0",
-        porcentaje: "0",
+        nota: "",
+        porcentaje: "",
       },
     ]);
   };
