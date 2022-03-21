@@ -79,16 +79,16 @@ function App() {
       <div className="flex items-center justify-center">
         <div className="flex items-center justify-center flex-col w-10/12 pt-10">
           <h1 className="text-4xl font-bold mb-10 text-center">
-            Calcula tu promedio de notas📚
+            Calcula tu promedio de notas 📚
           </h1>
           <button
-            className="rounded-md w-1/2 h-10 bg-blue-500 text-white mb-1"
+            className="rounded-md w-2/3 h-10 bg-blue-500 text-white mb-1"
             onClick={addNewNota}
           >
             Agregar nota
           </button>
           <button
-            className="rounded-md w-1/2 h-10 bg-red-500 text-white mb-5"
+            className="rounded-md w-2/3 h-10 bg-red-500 text-white mb-5"
             onClick={deleteLastNota}
           >
             Eliminar última nota
