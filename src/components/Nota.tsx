@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { motion } from "framer-motion";
 
 interface notaProps {
   handleNotaChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -16,7 +17,7 @@ const Nota = ({
   id,
 }: notaProps) => {
   return (
-    <div className="border-2 h-16 bg-white my-1 rounded-lg grid grid-cols-3 items-center px-4">
+    <motion.div initial={{y: -100}} animate={{y: 0}} className="border-2 h-16 bg-white my-1 rounded-lg grid grid-cols-3 items-center px-4">
       <span className="font-bold">Nota {id + 1}</span>
       <input
         className="border-2 w-10 mx-5 pl-1"
@@ -33,7 +34,7 @@ const Nota = ({
         />
         <span>%</span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
