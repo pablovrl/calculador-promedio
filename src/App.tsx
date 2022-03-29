@@ -79,7 +79,8 @@ function App() {
 
   return (
     <>
-      <div className="flex items-center justify-center  ">
+      <div className="background h-full w-full absolute"></div>
+      <div className="flex items-center justify-center relative z-10">
         <div className="flex items-center justify-center flex-col w-10/12 pt-10 md:max-w-6xl">
           <h1 className="text-4xl font-bold mb-5 text-center md:mb-16">
             Calcula tu promedio de notas 📚
