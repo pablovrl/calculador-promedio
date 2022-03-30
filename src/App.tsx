@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import Nota from "./components/Nota";
 import { useMediaQuery } from "react-responsive";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Nota {
   id: number;
@@ -80,25 +80,28 @@ function App() {
 
   return (
     <>
-      <div className="background h-full w-full absolute"></div>
       <div className="flex items-center justify-center relative z-10">
         <div className="flex items-center justify-center flex-col w-10/12 pt-10 lg:max-w-6xl">
           <h1 className="text-4xl font-bold mb-5 text-center lg:mb-16 lg:text-6xl">
             Calcula tu promedio de notas 📚
           </h1>
           <div className="w-full flex flex-col items-center justify-center lg:flex-row">
-            <button
+            <motion.button
               className="rounded-lg w-2/3 h-10 bg-blue-500 text-white mb-1 lg:m-0 lg:w-1/4 lg:mr-5 lg:text-xl "
               onClick={addNewNota}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Agregar nota
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               className="rounded-lg w-2/3 h-10 bg-red-500 text-white mb-5 lg:m-0 lg:w-1/4 lg:text-xl "
               onClick={deleteLastNota}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Eliminar última nota
-            </button>
+            </motion.button>
           </div>
           <div className="flex flex-col justify-center items-center lg:flex-row lg:mt-5 lg:text-xl">
             <p>Ingresa tus notas sin comas ni puntos.</p>
@@ -106,22 +109,28 @@ function App() {
           </div>
           <div className="flex w-full mt-10 mb-24 lg:w-2/3 ">
             <div className="w-full">
-              {notas.map((nota, i) => (
-                <Nota
-                  key={i}
-                  id={nota.id}
-                  nota={nota.nota}
-                  porcentaje={nota.porcentaje}
-                  handleNotaChange={handleNotaChange}
-                  handlePorcentajeChange={handlePorcentajeChange}
-                />
-              ))}
+              <AnimatePresence>
+                {notas.map((nota, i) => (
+                  <Nota
+                    key={i}
+                    id={nota.id}
+                    nota={nota.nota}
+                    porcentaje={nota.porcentaje}
+                    handleNotaChange={handleNotaChange}
+                    handlePorcentajeChange={handlePorcentajeChange}
+                  />
+                ))}
+              </AnimatePresence>
             </div>
             {isDesktop && (
               <div className="flex flex-col items-center w-full">
                 <div className="text-center">
                   <h1 className="text-2xl">Promedio de notas</h1>
-                  <h1 className="text-7xl">{notaFinal.toFixed(1)}</h1>
+                  {isNaN(notaFinal) ? (
+                    <h1 className="text-3xl text-red-500">{"Ingrese notas válidas"}</h1>
+                  ) : (
+                    <h1 className="text-7xl">{notaFinal.toFixed(1)}</h1>
+                  )}
                 </div>
               </div>
             )}
